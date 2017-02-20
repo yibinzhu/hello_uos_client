@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mystyle.css">
+		<style>
+		
+  	</style>
+	</head>
+
+	<body style="overflow-y:hidden">
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">学费缴纳时间表</h1>
+		</header>
+		<div class="mui-content">
+			
+		  		<!--下拉刷新容器-->
+			<div>
+				<div >
+					<!--数据列表-->
+					<ul id="OA_task_1" class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+			
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+				mui.init();
+				mui.ready(function() {
+				
+				var d = new Date();
+				var year = d.getFullYear();
+				var whichMonth = d.getMonth()+1;
+				switch (true){
+	            case whichMonth=="1"||whichMonth=="2"||whichMonth=="3"||whichMonth=="4"||whichMonth =="5"||whichMonth=="6"||whichMonth=="7":
+	            var term = 'A10';
+	             console.log('1');
+	             break;
+	            case whichMonth =="8"||whichMonth=="9"||whichMonth=="10"||whichMonth=="11"||whichMonth=="12":
+	            var term = 'A20';
+	            console.log('2');
+	             break;
+	          }
+				console.log(year);
+				console.log(term);
+			
+				mui.ajax('http://ec2-52-78-245-204.ap-northeast-2.compute.amazonaws.com:3000/searchCourse/tuition',{
+				data:{
+					year:year,
+					term:term,
+				},
+				dataType:'xml',//服务器返回xml格式数据
+				type:'get',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				headers:{'Content-Type':'application/xml'},           
+				success:function(data){
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+				document.getElementById("OA_task_1").innerHTML = "";
+				  var x = data.getElementsByTagName("list");
+				  for (i = 0; i <x.length; i++) {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">삭제</a></div><div class="mui-slider-handle"><div class="mui-pull-left"><div><h5>'+x[i].getElementsByTagName("sche_div")[0].childNodes[0].nodeValue+'</h5></div><div>'+x[i].getElementsByTagName("pay_term")[0].childNodes[0].nodeValue+'</div></div></div>';
+						table.appendChild(li);
+				  }			
+
+				},
+				error:function(xhr,type,errorThrown){
+					//异常处理；
+					console.log(errorThrown);
+				}
+			});
+			  console.log("tap event trigger");
+			  
+			   mui('#OA_task_1').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					mui.confirm('삭제하십니까？', 'UOS', btnArray, function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								mui.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				var btnArray = ['확인', '취소'];
+				
+			});
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>菜单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/mystyle.css">
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">UOS生活助手</h1>
+	</header>
+		<div class="mui-content">
+		        <ul class="mui-table-view mui-grid-view mui-grid-9" style="background: white;">
+		            <li id="major" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-kechengliebiao" style="color: #2096ba;"></span>
+		                    <div class="mui-media-body">专业课表</div></a></li>
+		            <li id="minor" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-kechengliebiao" style="color:#f2753f;"></span>
+		                    <div class="mui-media-body">教养课表</div></a></li>
+		            <li id="schoolmap" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-wangzhanditu" style="color:#c0392b;"></span>
+		                    <div class="mui-media-body">校园地图</div></a></li>
+		            <li id="board" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-xw" style="color:#34352c;"></span>
+		                    <div class="mui-media-body">校园公告</div></a></li>
+		            <li id="schedule" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-richeng" style="color:#c92252;"></span>
+		                    <div class="mui-media-body">教务日程</div></a></li>
+		            <li id="tuition" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-tubiaolunkuohua09" style="color:#199475;"></span>
+		                    <div class="mui-media-body">学费缴纳时间</div></a></li>
+		            <li id="uosLab" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-kechengjieshao" style="color:#cca16d;"></span>
+		                    <div class="mui-media-body">图书馆</div></a></li>
+		            <li id="forum" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-shequ" style="color:#e84c3d;"></span>
+		                    <div class="mui-media-body">留学生社区</div></a></li>
+		           	<li id="club" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-gonggao" style="color:#ea8677;"></span>
+		                    <div class="mui-media-body">留学生CLUB</div></a></li>
+		            <li id="food" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-canju" style="color:#424e69;"></span>
+		                    <div class="mui-media-body">食堂菜单</div></a></li>
+		            
+		            <li id="findProfessor" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon icon mui-icon mui-icon-search" style="color:#d08924;"></span>
+		                    <div class="mui-media-body">查找教授</div></a></li>
+		           <li id="schoolAdress" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
+		                    <span class="mui-icon iconfont icon-icon01" style="color:#44615e;"></span>
+		                    <div class="mui-media-body">校内电话录</div></a></li>
+		        </ul> 
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		document.getElementById('major').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'major.html', 
+		    id:'major'
+		  });
+		});
+		document.getElementById('minor').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'minor.html', 
+		    id:'minor'
+		  });
+		});
+		document.getElementById('schoolmap').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'schoolMap.html', 
+		    id:'schoolMap'
+		  });
+		});
+		document.getElementById('schedule').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'mainBoard.html', 
+		    id:'mainBoard'
+		  });
+		});
+		document.getElementById('tuition').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'tuition.html', 
+		    id:'tuition'
+		  });
+		});
+		document.getElementById('forum').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'http://ec2-52-78-245-204.ap-northeast-2.compute.amazonaws.com:4567/', 
+		    id:'forum'
+		  });
+		});
+		document.getElementById('board').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'main-webview-board.html', 
+		    id:'board'
+		  });
+		});
+		document.getElementById('club').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'clubNews.html', 
+		    id:'club'
+		  });
+		});
+		document.getElementById('uosLab').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'uosLab.html', 
+		    id:'uosLab'
+		  });
+		});
+		document.getElementById('food').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'restaurant.html', 
+		    id:'restaurant'
+		  });
+		});
+		document.getElementById('findProfessor').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'findProfessor.html', 
+		    id:'dianping'
+		  });
+		});
+		document.getElementById('schoolAdress').addEventListener('tap', function() {
+ 		 //打开页面
+		  mui.openWindow({
+		    url: 'http://uos.ac.kr/kor/auos/guide/phone/phone.do', 
+		    id:'dianping'
+		  });
+		});
+	</script>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>教养课</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mystyle.css">
+		<style>
+		
+  	</style>
+	</head>
+
+	<body style="overflow-y:hidden">
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">教养课时间表</h1>
+		</header>
+		<div class="mui-content" style="margin-top:10px">
+			<div class="mui-button-row">
+				<select class="mui-btn" id="whichYear" style="width:80px;height:32px; background-color: #f0ad4e;color:whitesmoke">
+				</select>
+				<select class="mui-btn" id="sessionOption" style="width:80px;height:32px; background-color: #f0ad4e;color:whitesmoke">
+						<option value="A10">第一学期</option>
+						<option value="A20">第二学期</option>
+						<option value="A11">夏季假期</option>
+						<option value="A21">冬季假期</option>
+				</select>
+			    <button id='showUserPicker' class="mui-btn mui-btn-warning mui-icon mui-icon-search" type='button'>课程分类</button>
+				<div id='infoResult' class="ui-alert"></div>
+			</div>
+		  		<!--下拉刷新容器-->
+			<div style="margin-top:10px;">
+				<div >
+					<!--数据列表-->
+					<ul id="courseList" class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+						var d = new Date();
+						var whichYear = d.getFullYear();
+						var yearSelectBox = document.getElementById('whichYear');
+						for(var i =0;i<3;i++){
+							var option = document.createElement("option");
+							option.text = whichYear - i;
+							yearSelectBox.add(option);
+						}
+						yearSelectBox.value = whichYear;
+						
+					var setSession = function(){
+						var m = new Date()
+							var whichMonth = m.getMonth()+1;
+							console.log(whichMonth);
+							var optionText;
+							var optionValue;
+							var sessionOption = document.getElementById('sessionOption');
+							switch (true){
+							case whichMonth=="1"||whichMonth=="2"||whichMonth=="3"||whichMonth=="4":
+							selectedIndex = "0";
+							 break;
+							case whichMonth =="5"||whichMonth=="6"||whichMonth=="7":
+							selectedIndex = "1";
+							 break;
+							case whichMonth =="8"||whichMonth=="9"||whichMonth=="10":
+							selectedIndex = "2";
+							console.log('3');
+							 break;
+							case whichMonth=="11"||whichMonth=="12":
+							selectedIndex = "3";
+							console.log('4');
+							 break;
+						}
+							sessionOption.selectedIndex = selectedIndex;
+					}
+					setSession();
+					
+					//类别单选按钮
+					var userPicker = new $.PopPicker();
+					userPicker.setData([
+						{"value":"A01","text":"교양선택"},
+						{"value":"A02","text":"교양필수"},
+//						{"value":"A03","text":"전공필수"},
+//						{"value":"A04","text":"전공선택"},
+//						{"value":"A05","text":"일반선택"},
+//						{"value":"A06","text":"ROTC"},
+//						{"value":"A07","text":"교직"},
+//						{"value":"A08","text":"교환학점"},
+//						{"value":"A09","text":"선수"},
+//						{"value":"A10","text":"기초선택"}
+						]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					var userResult = doc.getElementById('userResult');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							var year = document.getElementById('whichYear').value;
+							var term = document.getElementById('sessionOption').value;
+							var subjectDiv = items[0].value;
+							getApiData(year,term,subjectDiv);
+						});
+					}, false);
+					//请求数据开始
+			//监听点击事件
+		 var getApiData = function (year,term,subjectDiv) {
+				var nwaiting = plus.nativeUI.showWaiting();
+				mui.ajax('http://ec2-52-78-245-204.ap-northeast-2.compute.amazonaws.com:3000/searchCourse/minor',{
+				data:{
+					year:year,
+					term:term,
+					subjectDiv:subjectDiv,
+				},
+				dataType:'xml',//服务器返回xml格式数据
+				type:'get',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				headers:{'Content-Type':'application/xml'},	              
+				success:function(data){
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+				document.getElementById("courseList").innerHTML = "";
+				  var x = data.getElementsByTagName("list");
+				  for (i = 0; i <x.length; i++) {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						try{
+						li.innerHTML = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">삭제</a></div><div class="mui-slider-handle"><div class="mui-pull-left"><h4>'+x[i].getElementsByTagName("subject_nm")[0].childNodes[0].nodeValue+'</h4><p><span>교과번호:</span>'+x[i].getElementsByTagName("subject_no")[0].childNodes[0].nodeValue+'</p><p><span>학부:</span>'+x[i].getElementsByTagName("sub_dept")[0].childNodes[0].nodeValue+'</p><p><span>구분:</span>'+x[i].getElementsByTagName("subject_div")[0].childNodes[0].nodeValue+'</p><p><span>교수:</span>'+x[i].getElementsByTagName("prof_nm")[0].childNodes[0].nodeValue+'</p><p style="width:200px;"><span>시간:</span>'+x[i].getElementsByTagName("class_nm")[0].childNodes[0].nodeValue+'</p></div><div class="mui-pull-right"><div class="mui-icon mui-icon-plusempty mui-right"></div><p><span>정원:</span>'+x[i].getElementsByTagName("tlsn_count")[0].childNodes[0].nodeValue+'</p><p><span>신청:</span>'+x[i].getElementsByTagName("tlsn_limit_count")[0].childNodes[0].nodeValue+'</p><p><span>분반:</span>'+x[i].getElementsByTagName("class_div")[0].childNodes[0].nodeValue+'</p><p><span>학년:</span>'+x[i].getElementsByTagName("shyr")[0].childNodes[0].nodeValue+'</p><p><span>학점:</span>'+x[i].getElementsByTagName("credit")[0].childNodes[0].nodeValue+'</p></div></div>';
+						table.appendChild(li);
+						}
+						catch(err){
+						li.innerHTML = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">삭제</a></div><div class="mui-slider-handle"><div class="mui-pull-left"><h4>'+x[i].getElementsByTagName("subject_nm")[0].childNodes[0].nodeValue+'</h4><p><span>교과번호:</span>'+x[i].getElementsByTagName("subject_no")[0].childNodes[0].nodeValue+'</p><p><span>학부:</span>'+x[i].getElementsByTagName("sub_dept")[0].childNodes[0].nodeValue+'</p><p><span>구분:</span>'+x[i].getElementsByTagName("subject_div")[0].childNodes[0].nodeValue+'</p><p><span>교수:</span>'+x[i].getElementsByTagName("prof_nm")[0].childNodes[0].nodeValue+'</p><p style="width:200px;"><span>시간:</span>'+x[i].getElementsByTagName("class_nm")[0].childNodes[0].nodeValue+'</p></div><div class="mui-pull-right"><div class="mui-icon mui-icon-plusempty mui-right"></div><p><span>분반:</span>'+x[i].getElementsByTagName("class_div")[0].childNodes[0].nodeValue+'</p><p><span>학년:</span>'+x[i].getElementsByTagName("shyr")[0].childNodes[0].nodeValue+'</p><p><span>학점:</span>'+x[i].getElementsByTagName("credit")[0].childNodes[0].nodeValue+'</p></div></div>';
+						table.appendChild(li);
+						}
+	
+				  }			
+
+					nwaiting.close();
+				},
+				error:function(xhr,type,errorThrown){
+					//异常处理；
+					console.log(type);
+				}
+			});
+			  console.log("tap event trigger");
+			}
+		//--------------------------------------------
+			
+		 //第一个demo，拖拽后显示操作图标，点击操作图标删除元素；
+		 $('#courseList').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					mui.confirm('是否确定删除？', '提醒', btnArray, function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				var btnArray = ['确定', '取消'];
+			});
+			})(mui, document);
+		</script>
+	</body>
+
+</html>

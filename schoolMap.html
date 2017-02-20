@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<!--<link href="css/mui.poppicker.css" rel="stylesheet" />-->
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<link rel="stylesheet" href="css/mystyle.css">
+		<style>
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">校园地图</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				
+				<div style="position: relative;">
+					<img src="img/1_5_1_img1.gif" style="width:100%;margin-left:2px;margin-top:10px;margin-bottom: 20px;"/>
+					<div id="mapMark" style="position: absolute;top:68%;left:25%;"><img src="img/pin_1-128.png" style="width:32px;height:32px;"></div>
+				</div>
+				<button id='showUserPicker' class="mui-btn mui-btn-block mui-btn-primary" type='button' style="margin-top:60px;">查看列表</button>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([
+						{
+						    "value" :"01" ,
+						    "text":"01.전농관"
+						},
+						{
+						    "value" :"02" ,
+						    "text":"02.제1공학관"
+						},
+						{
+						    "value" :"03" ,
+						    "text":"03.건설공학관"
+						},
+						{
+						    "value" :"04" ,
+						    "text":"04.창공관"
+						},
+						{
+						    "value" :"05" ,
+						    "text":"05.인문학관"
+						},
+						{
+						    "value" :"06" ,
+						    "text":"06.배봉관"
+						},
+						{
+						    "value" :"07" ,
+						    "text":"07.본관"
+						},
+						{
+						    "value" :"08" ,
+						    "text":"08.자연과학관"
+						},
+						{
+						    "value" :"09" ,
+						    "text":"09.음악관"
+						},
+						{
+						    "value" :"10" ,
+						    "text":"10.경농관"
+						},
+						{
+						    "value" :"11" ,
+						    "text":"11.제2공학관"
+						},
+						{
+						    "value" :"12" ,
+						    "text":"12.학생회관"
+						},
+						{
+						    "value" :"13" ,
+						    "text":"13.언무관"
+						},
+						{
+						    "value" :"14" ,
+						    "text":"14.과학기술관"
+						},
+						{
+						    "value" :"15" ,
+						    "text":"15.21세기관"
+						},
+						{
+						    "value" :"16" ,
+						    "text":"16.조형관"
+						},
+						{
+						    "value" :"17" ,
+						    "text":"17.체육관"
+						},
+						{
+						    "value" :"18" ,
+						    "text":"18.자작마루"
+						},
+						{
+						    "value" :"19" ,
+						    "text":"19.정보기술관"
+						},
+						{
+						    "value" :"20" ,
+						    "text":"20.법학관"
+						},
+						{
+						    "value" :"21" ,
+						    "text":"21.중앙도서관"
+						},
+						{
+						    "value" :"22" ,
+						    "text":"22.생활관"
+						},
+						{
+						    "value" :"23" ,
+						    "text":"23.건축구조실험동"
+						},
+						{
+						    "value" :"24" ,
+						    "text":"24.토목구조실험실"
+						},
+						{
+						    "value" :"25" ,
+						    "text":"25.미디어관"
+						},
+						{
+						    "value" :"27" ,
+						    "text":"27.대강당"
+						},
+						{
+						    "value" :"28" ,
+						    "text":"28.대운동장"
+						},
+						{
+						    "value" :"29" ,
+						    "text":"29.박물관"
+						},
+						{
+						    "value" :"30" ,
+						    "text":"30.서울시민대학분교"
+						},
+						{
+						    "value" :"31" ,
+						    "text":"31.서울시민대학중랑분교"
+						},
+						{
+						    "value" :"32" ,
+						    "text":"32.웰니스센터"
+						},
+						{
+						    "value" :"33" ,
+						    "text":"33.미래관"
+						},
+						{
+						    "value" :"34" ,
+						    "text":"34.국제학사"
+						},
+						{
+						    "value" :"35" ,
+						    "text":"35.음악관(신관)"
+						}]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					var userResult = doc.getElementById('userResult');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+							var markTop;
+							var markLeft;
+							var mapValue;
+							mapValue = items[0].value;
+							var mapMark = document.getElementById('mapMark');
+							switch (true){
+								case mapValue=="01":
+							    markTop="52%";markLeft="41%";
+							    break;
+							case mapValue=="02":
+							    markTop="18%";markLeft="40%";
+							    break;
+							case mapValue=="03":
+							    markTop="33%";markLeft="47%";
+							    break;
+							case mapValue=="04":
+							    markTop="7%";markLeft="62%";
+							    break;
+							case mapValue=="05":
+							    markTop="12%";markLeft="74%";
+							    break;
+							case mapValue=="06":
+							    markTop="10%";markLeft="52%";
+							    break;
+							case mapValue=="07":
+							    markTop="17%";markLeft="32%";
+							    break;
+							case mapValue=="08":
+							    markTop="26%";markLeft="84%";
+							    break;
+							case mapValue=="09":
+							    markTop="3%";markLeft="89%";
+							    break;
+							case mapValue=="10":
+								 markTop="55%";markLeft="57%";
+								 break;
+								case mapValue=="11":
+								 markTop="16%";markLeft="48%";
+								 break;
+								case mapValue=="12":
+								 markTop="18%";markLeft="66%";
+								 break;
+								case mapValue=="13":
+								 markTop="8%";markLeft="55%";
+								 break;
+								case mapValue=="14":
+								 markTop="24%";markLeft="18%";
+								 break;
+								case mapValue=="15":
+								 markTop="30%";markLeft="68%";
+								 break;
+								case mapValue=="16":
+								 markTop="40%";markLeft="24%";
+								 break;
+								case mapValue=="17":
+								 markTop="50%";markLeft="17%";
+								 break;
+								case mapValue=="18":
+								 markTop="40%";markLeft="68%";
+								 break;
+								case mapValue=="19":
+								 markTop="15%";markLeft="82%";
+								 break;
+								case mapValue=="20":
+								 markTop="53%";markLeft="80%";
+								 break;
+								case mapValue=="21":
+								 markTop="1%";markLeft="60%";
+								 break;
+								case mapValue=="22":
+								 markTop="0";markLeft="70%";
+								 break;
+								case mapValue=="23":
+								 markTop="42%";markLeft="82%";
+								 break;
+								case mapValue=="24":
+								 markTop="46%";markLeft="82%";
+								 break;
+								case mapValue=="25":
+								 markTop="21%";markLeft="89%";
+								 break;
+								case mapValue=="27":
+								 markTop="24%";markLeft="78%";
+								 break;
+								case mapValue=="28":
+								 markTop="35%";markLeft="15%";
+								 break;
+								case mapValue=="29":
+								 markTop="45%";markLeft="58%";
+								 break;
+								case mapValue=="30":
+								 markTop="68%";markLeft="25%";
+								 break;
+								case mapValue=="31":
+								 markTop="4%";markLeft="39%";
+								 break;
+								case mapValue=="32":
+								 markTop="58%";markLeft="75%";
+								 break;
+								case mapValue=="33":
+								 markTop="30%";markLeft="30%";
+								 break;
+								case mapValue=="34":
+								 markTop="0";markLeft="80%";
+								 break;
+								case mapValue=="35":
+								 markTop="12%";markLeft="68%";
+								 break;
+							}
+							mapMark.style.top = markTop;
+							mapMark.style.left = markLeft;
+						});
+					}, false);
+					//-----------------------------------------
+					
+				});
+			})(mui, document);
+		</script>
+	</body>
+
+</html>

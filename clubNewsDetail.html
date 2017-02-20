@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mystyle.css">
+		<style>
+			.mui-content{background-color: white;}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">详情</h1>
+		</header>
+		<div class="mui-content">
+		    <div style="margin:20px 10px 0 10px">
+			<!--页眉，放置标题-->
+			<div id="newsTitle">
+			
+			</div>
+			<!--内容区-->
+			<div class="mui-card-content" id="newsContent"></div>
+			<!--页脚，放置补充信息或支持的操作-->
+			<!--<div class="mui-card-footer">页脚</div>-->
+		</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+
+		//添加自定义事件监听
+			window.addEventListener('getDetail',function(event){
+			var nwaiting = plus.nativeUI.showWaiting();
+			//获得事件参数
+			var newsTitle = event.detail.newsTitle;
+			var postDate = event.detail.postDate;
+			var note_seq = event.detail.note_seq;
+			var pageIndex = event.detail.pageIndex;
+			var list_id = event.detail.list_id;
+			
+			console.log('note_seq is ->'+note_seq);
+			document.getElementById('newsContent').innerHTML = '';
+			document.getElementById('newsTitle').innerHTML = '<div>'+newsTitle+'</div>'+'<p class="mui-h6">'+postDate+'</p>';
+			mui.ajax('http://ec2-52-78-245-204.ap-northeast-2.compute.amazonaws.com:3000/uosPortal/detail',{
+						data:{
+							note_seq:note_seq,
+							pageIndex:pageIndex,
+							list_id:list_id
+						},
+						dataType:'html',
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/json'},           
+						success:function(data){
+							console.log('note_seq is-->'+note_seq.length);
+							console.log('pageIndex is-->'+pageIndex.length);
+							console.log('list_id is-->'+list_id.length);
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							document.getElementById('newsContent').innerHTML = data;
+							nwaiting.close();
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							console.log(type);
+							mui.toast('인터넷 접속 확인하세요');
+						}
+				});
+
+			})
+            });
+		
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,12 @@
+body{background-color: white;}
+.mui-content{background-color: white;}
+img{max-width: 100%;}
+
+/*导航栏颜色*/
+.mui-bar-nav,.menu,.mui-table-view-cell:after{
+	background-color: #23a7f2;/*改这个颜色值就可以啦*/
+}
+/*导航栏图标和文字颜色*/
+.mui-bar-nav h1,.mui-icon,.menu .mui-table-view-cell>a:not(.mui-btn){
+	color: white;/*改这个颜色值就可以啦*/
+}

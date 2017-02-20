@@ -1,0 +1,349 @@
+{
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "zhuanyeke.html",
+      "searchBuilding.html",
+      "major.html",
+      "schoolMap.html",
+      "minor.html",
+      "tuition.html",
+      "mainBoard.html",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "tab-webview-main.html",
+      "tab-webview-subpage-about.html",
+      "main-webview-menu.html",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "css/mystyle.css",
+      "index02.html",
+      "nearFood.html",
+      "newsDetail.html"
+    ],
+    "refer": [
+      "zhuanyeke.html",
+      "searchBuilding.html",
+      "major.html",
+      "schoolMap.html",
+      "minor.html",
+      "tuition.html",
+      "mainBoard.html",
+      "tab-webview-main.html",
+      "tab-webview-subpage-about.html",
+      "tab-webview-subpage-setting.html",
+      "tab-webview-subpage-chat.html",
+      "tab-webview-subpage-contact.html",
+      "main-webview-menu.html",
+      "main-webview-board.html",
+      "uosLab.html",
+      "findProfessor.html",
+      "clubNews.html",
+      "restaurant.html",
+      "newsDetail.html",
+      "nearFood.html"
+    ]
+  },
+  "zhuanyeke.html": {
+    "resources": [
+      "index.html",
+      "cd_catalog.xml",
+      "js/bootstrap.min.js",
+      "js/jquery.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "searchBuilding.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "img/1_5_1_img1.gif",
+      "index.html",
+      "css/mui.picker.min.css"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "major.html": {
+    "resources": [
+      "index.html",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "tab-webview-main.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.picker.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "index.html",
+      "tab-webview-main.html"
+    ]
+  },
+  "schoolMap.html": {
+    "resources": [
+      "img/1_5_1_img1.gif",
+      "css/mui.picker.min.css",
+      "index.html",
+      "img/map-marker.png",
+      "img/pin.png",
+      "img/pin_1-128.png",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/mui.picker.min.js",
+      "tab-webview-main.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "index.html",
+      "tab-webview-main.html"
+    ]
+  },
+  "minor.html": {
+    "resources": [
+      "index.html",
+      "js/mui.picker.min.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "tab-webview-main.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.picker.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "index.html",
+      "tab-webview-main.html"
+    ]
+  },
+  "tuition.html": {
+    "resources": [
+      "index.html",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "tab-webview-main.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "index.html",
+      "tab-webview-main.html"
+    ]
+  },
+  "mainBoard.html": {
+    "resources": [
+      "index.html",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "tab-webview-main.html": {
+    "resources": [
+      "index.html",
+      "schoolMap.html",
+      "minor.html",
+      "tuition.html",
+      "major.html"
+    ],
+    "refer": [
+      "index.html",
+      "schoolMap.html",
+      "minor.html",
+      "tuition.html",
+      "major.html"
+    ]
+  },
+  "tab-webview-subpage-about.html": {
+    "resources": [
+      "schoolMap.html",
+      "tuition.html",
+      "minor.html",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [
+      "schoolMap.html",
+      "tuition.html",
+      "minor.html"
+    ]
+  },
+  "tab-webview-subpage-chat.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "major.html",
+      "mainBoard.html"
+    ],
+    "refer": []
+  },
+  "main-webview-menu.html": {
+    "resources": [
+      "major.html",
+      "minor.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "fonts/mui-icons-extra.ttf",
+      "css/icons-extra.css",
+      "css/menuIconfont.css",
+      "img/milk.png",
+      "img/yearbook.png",
+      "img/usercard.png",
+      "img/test.png"
+    ],
+    "refer": [
+      "major.html",
+      "minor.html",
+      "schoolMap.html",
+      "tuition.html",
+      "mainBoard.html",
+      "main-webview-board.html",
+      "newsCategory.html",
+      "clubNews.html",
+      "uosLab.html",
+      "restaurant.html",
+      "nearFood.html",
+      "findProfessor.html"
+    ]
+  },
+  "main-webview-board.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "newsDetail.html"
+    ]
+  },
+  "newsDetail.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css"
+    ],
+    "refer": []
+  },
+  "newsCategory.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "newsList.html"
+    ]
+  },
+  "newsList.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "clubNews.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [
+      "clubNewsDetail.html"
+    ]
+  },
+  "clubNewsDetail.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css"
+    ],
+    "refer": []
+  },
+  "uosLab.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css"
+    ],
+    "refer": []
+  },
+  "restaurant.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mystyle.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-setting.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "nearFood.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "findProfessor.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}
