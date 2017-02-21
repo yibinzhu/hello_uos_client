@@ -16,9 +16,6 @@
 
 	<body>
 	<div id="app">
-	<header class="mui-bar mui-bar-nav">
-	    <h1 class="mui-title">{{menu.title}}</h1>
-	</header>
 		<div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9" style="background: white;">
 		            <li id="major" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a>
@@ -67,7 +64,8 @@
 	<script src="language/ko/menu.js"></script>
 	<script>
 		mui.init({
-			swipeBack:true //启用右滑关闭功能
+			swipeBack:true, //启用右滑关闭功能
+			ppreloadLimit:5
 		});
 		new Vue({
 		  el: '#app',
@@ -132,28 +130,28 @@
 		  });
 		});
 		document.getElementById('uosLab').addEventListener('tap', function() {
- 		 //打开页面
+   		 //打开页面
 		  mui.openWindow({
 		    url: 'uosLab.html', 
 		    id:'uosLab'
 		  });
 		});
 		document.getElementById('food').addEventListener('tap', function() {
- 		 //打开页面
+   		 //打开页面
 		  mui.openWindow({
 		    url: 'restaurant.html', 
 		    id:'restaurant'
 		  });
 		});
 		document.getElementById('findProfessor').addEventListener('tap', function() {
- 		 //打开页面
+   		 //打开页面
 		  mui.openWindow({
 		    url: 'findProfessor.html', 
 		    id:'dianping'
 		  });
 		});
 		document.getElementById('schoolAdress').addEventListener('tap', function() {
- 		 //打开页面
+   		 //打开页面
 		  mui.openWindow({
 		    url: 'http://uos.ac.kr/kor/auos/guide/phone/phone.do', 
 		    id:'dianping'

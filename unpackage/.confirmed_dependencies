@@ -194,12 +194,23 @@
       "tuition.html",
       "minor.html",
       "js/mui.pullToRefresh.js",
-      "js/mui.pullToRefresh.material.js"
+      "js/mui.pullToRefresh.material.js",
+      "js/vue.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "fonts/iconfont.ttf",
+      "css/mystyle.css",
+      "language/ko/menu.js"
     ],
     "refer": [
       "schoolMap.html",
       "tuition.html",
-      "minor.html"
+      "minor.html",
+      "clubNews.html",
+      "main-webview-board.html",
+      "major.html",
+      "mainBoard.html",
+      "uosLab.html"
     ]
   },
   "tab-webview-subpage-chat.html": {
@@ -345,5 +356,20 @@
       "css/mui.min.css"
     ],
     "refer": []
+  },
+  "main.html": {
+    "resources": [
+      "tab-webview-subpage-about.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mystyle.css"
+    ],
+    "refer": [
+      "tab-webview-subpage-about.html",
+      "tab-webview-subpage-setting.html",
+      "tab-webview-subpage-chat.html",
+      "tab-webview-subpage-contact.html"
+    ]
   }
 }
